@@ -22,7 +22,7 @@
         <div class="container-fluid">
             <a href="#" class="navbar-brand"><img src="/img/Logo Misia.jpg" height="30" width="24"
                     class="d-inline-block align-text-top" alt=""></a>
-            <a class="navbar-brand" href="#">APP NAME</a>
+            <a class="navbar-brand" href="#">Subiro</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -53,15 +53,57 @@
             <h2 class="border-1 border-bottom border-dark">The code</h2>
             <div class="row row-cols-1 row-cols-md-2">
                 <div class="col-md-8">
-                    <pre class="line-number"><code class="language-javascript">function HelloWorld() {
-                        alert("Hello world");
-                    }
+                    <pre class="line-number"><code class="language-javascript">//get values
+                        function getValues() {
+                        
+                            let startValue = document.getElementById("startValue").value;
+                            let endValue = document.getElementById("endValue").value;
+                        
+                            startValue = parseInt(startValue);
+                            endValue = parseInt(endValue);
+                        
+                            if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
+                                let numbers = generateNumbers(startValue, endValue);
+                                displayNumbers(numbers);
+                            } else {
+                                alert("Enter integers");
+                            }
+                        }
+                        
+                        // generate numbers
+                        function generateNumbers(sValue, eValue) {
+                        
+                            let numbers = [];
+                        
+                            for (let i = sValue; i <= eValue; i++) {
+                                numbers.push(i);
+                        
+                            }
+                            return numbers;
+                        }
+                        
+                        // display numbers and make even bold
+                        function displayNumbers(numbers) {
+                            let templateRows = "";
+                            for (let index = 0; index < numbers.length; index++) {
+                                let number = numbers[index];
+                                if (number % 2 === 0) {
+                                    templateRows += `<tr><td><strong>${number}</strong></td></tr>`;
+                                } else {
+                                    templateRows += `<tr><td>${number}</td></tr>`;
+                                }
+                        
+                                document.getElementById("results").innerHTML = templateRows;
+                        
+                            }
+                        }
+                        
+                        
                 </code></pre>
                 </div>
                 <div class="col-md-4">
-                    <p>The code is structured in one function.</p>
-                    <h5>Hello world</h5>
-                    <p>Hello world is a function that displays an alert with a message of "Hello world"</p>
+                    <p>The code</p>
+
                 </div>
             </div>
 
